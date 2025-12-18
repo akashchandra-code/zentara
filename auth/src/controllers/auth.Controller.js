@@ -27,6 +27,7 @@ async function register(req, res) {
       {
         id: newUser._id,
         email: newUser.email,
+        role: newUser.role,
       },
       process.env.JWT_SECRET,
       {
@@ -70,6 +71,7 @@ async function login(req, res) {
       {
         id: user._id,
         email: user.email,
+        role: user.role,
       },
       process.env.JWT_SECRET,
       { expiresIn: "1d" }
