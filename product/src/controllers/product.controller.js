@@ -3,7 +3,7 @@ const { uploadImage } = require("../services/imagekit.service");
 const mongoose = require("mongoose");
 async function createProductController(req, res) {
   try {
-    const { title, description, priceAmount, priceCurrency = "INR" } = req.body;
+    const { title, description, priceAmount, priceCurrency = "INR", stock } = req.body;
     const seller = req.user.id; // Extract seller from authenticated user
 
     const price = {
@@ -20,6 +20,7 @@ async function createProductController(req, res) {
       price,
       seller,
       images,
+      stock: Number(stock),
     });
     return res.status(201).json({
       message: "Product created",
